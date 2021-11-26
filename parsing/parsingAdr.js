@@ -58,7 +58,7 @@ function getPreviousStatus (data) {
 }
 
 function getRelations (data) {
-  const regex = /^([\w \t-]+)\[([\d\w-]+\.md)\]\([\d\w-]+\.md\) on ([\w -]+)$/gm
+  const regex = /^([\w \t-]+)\[([\d\w-]+)(\.md|)\]\(([\d\w-]+)(\.md|)\) on ([\w -]+)$/gm
   let res = []
   let m
   while ((m = regex.exec(data)) != null) {
@@ -66,8 +66,8 @@ function getRelations (data) {
     if (m.index === regex.lastIndex) {
       regex.lastIndex++
     }
-    if (m.length === 4) {
-      res.push({ 'link': m[1].trim(), 'adrFilename': m[2].trim(), 'date': Date.parse(m[3].trim()) })
+    if (m.length === 6) {
+      res.push({ 'link': m[1].trim() + m[2].trim(), 'adrFilename': m[3].trim() + m[4].trim(), 'date': Date.parse(m[5].trim()) })
     }
   }
   return res
