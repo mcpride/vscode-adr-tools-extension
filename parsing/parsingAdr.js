@@ -66,7 +66,7 @@ function getRelations (data) {
     if (m.index === regex.lastIndex) {
       regex.lastIndex++
     }
-    if (m.length === 6) {
+    if (m.length === 7) {
       res.push({ 'link': m[1].trim() + m[2].trim(), 'adrFilename': m[3].trim() + m[4].trim() + m[5].trim(), 'date': Date.parse(m[6].trim()) })
     }
   }
